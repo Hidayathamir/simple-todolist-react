@@ -1,8 +1,8 @@
-function Foot() {
+function Foot(props) {
   return (
     <div className="footer">
-      <span>You have 4 pending task</span>
-      <button>Clear All</button>
+      <span>You have {props.words.length} pending task</span>
+      <button onClick={() => props.resetWords()}>Clear All</button>
     </div>
   );
 }

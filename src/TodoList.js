@@ -1,39 +1,19 @@
-function TodoList() {
-  return (
-    <ul className="todoList">
-      <ul>
-        <li>
-          Buy a new gaming laptop
-          <span>
-            <i className="fas fa-trash"></i>
-          </span>
-        </li>
-        <li>
-          Buy a new pc
-          <span>
-            <i className="fas fa-trash"></i>
-          </span>
-        </li>
-        <li>
-          Buy a new monitor
-          <span>
-            <i className="fas fa-trash"></i>
-          </span>
-        </li>
-        <li>
-          Buy a new shoes
-          <span>
-            <i className="fas fa-trash"></i>
-          </span>
-        </li>
-        <li>
-          Buy a new watch
-          <span>
-            <i className="fas fa-trash"></i>
-          </span>
-        </li>
-      </ul>
-    </ul>
-  );
+function TodoList(props) {
+  const deleteWord = (value) => (e) => {
+    props.deleteWord(value);
+  };
+
+  const showTodoList = (value, index, array) => {
+    return (
+      <li key={index}>
+        {value}
+        <span onClick={deleteWord(value)}>
+          <i className="fas fa-trash"></i>
+        </span>
+      </li>
+    );
+  };
+  return <ul className="todoList">{props.words.map(showTodoList)}</ul>;
 }
+
 export default TodoList;
